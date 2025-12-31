@@ -26,3 +26,18 @@ void	free_file(t_file *file)
 	free_children(file);
 	free(file);
 }
+
+void	free_files(t_list *files)
+{
+	t_list	*tmp;
+	t_list	*next;
+
+	tmp = files;
+	while (tmp)
+	{
+		free_file(tmp->data);
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+}
